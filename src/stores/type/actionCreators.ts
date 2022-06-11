@@ -1,6 +1,6 @@
 import { changeTypeList } from './constants';
 
-export const changeTypeListAction = (TypeList) => ({
+export const changeTypeListAction = (typeList) => ({
   type: changeTypeList,
-  TypeList,
+  typeList,
 });

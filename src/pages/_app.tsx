@@ -9,7 +9,7 @@ import { changeTypeListAction } from '@/stores/type/actionCreators';
 
 import type { AppProps } from 'next/app';
 
-console.log('pages/_app.tsx', store.getState().app);
+// console.log('pages/_app.tsx', store.getState().app);
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

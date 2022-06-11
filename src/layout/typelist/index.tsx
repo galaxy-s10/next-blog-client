@@ -1,9 +1,20 @@
 import { memo, useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
-import store from '@/stores';
+import store, { wrapper } from '@/stores';
+import { useAppSelector } from '@/stores/hooks';
 
 import style from './style.module.scss';
-const LayoutTypeList = () => {
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async (result) => {
+    return { props: {} };
+  }
+);
+const LayoutTypeList = (props) => {
+  const typeInfo = useAppSelector((state) => {
+    console.log(state, 'useSelector');
+    return state.type;
+  });
   // 生命周期
   useEffect(() => {
     console.log(store.getState().type, '000');
@@ -13,10 +24,10 @@ const LayoutTypeList = () => {
     <div className={style['fix-type-wrapper']}>
       <ul className={style['type-wrapper']}>
         <li>全部</li>
-        {[1, 2, 3, 4, 5].map((item, index) => {
+        {typeInfo.typeList.map((item, index) => {
           return (
             <li key={index} className={style['item']}>
-              <span>type</span>
+              <span>{item.name}</span>
             </li>
           );
         })}

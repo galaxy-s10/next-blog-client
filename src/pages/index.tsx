@@ -13,15 +13,14 @@ console.log('pages/index.tsx');
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (result) => {
-    let typeList = null;
+    let typeList: any = null;
     try {
       typeList = await fetchTypeList({});
-      console.log(typeList);
     } catch (error) {
       console.log(error);
     }
-    console.log(1231, store, typeList);
-    // store.dispatch(store);
+    store.dispatch(changeTypeListAction(typeList.data.rows));
+    return { props: {} };
   }
 );
 
