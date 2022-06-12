@@ -3,12 +3,12 @@
 
 /* 响应式布局 - 小于 540px */
 @media screen and (max-width: 540px) {
-  .padding {
+  .index {
     padding: 20px 10px !important;
   }
 }
 
-.padding {
+.index {
   overflow: hidden;
   padding: 30px;
   border: 1px solid $theme-color4;

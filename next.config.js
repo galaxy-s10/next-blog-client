@@ -8,6 +8,9 @@ const nextConfig = {
     config.resolve.alias['@'] = path.resolve(__dirname);
     return config;
   },
+  images: {
+    domains: ['resource.lsyboy.cn'],
+  },
   async rewrites() {
     return [
       // {

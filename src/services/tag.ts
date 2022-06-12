@@ -8,6 +8,13 @@ export function fetchTagList(params) {
     params,
   });
 }
+export function fetchTagArticleList(params) {
+  return request({
+    url: `/tag/article_list/${params.tagId}`,
+    method: 'get',
+    params,
+  });
+}
 
 export function fetchCreateTag(data: ITag) {
   return request({

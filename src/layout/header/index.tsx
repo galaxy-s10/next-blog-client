@@ -65,7 +65,7 @@ const LayoutHeader = () => {
               </div>
             </div>
           </div>
-          <div className={style['search']}></div>
+          <div className={style['search']}>searchCpt</div>
           <div>loginCpt</div>
         </div>
       </div>

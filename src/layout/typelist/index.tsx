@@ -5,14 +5,14 @@ import store, { wrapper } from '@/stores';
 import { useAppSelector } from '@/stores/hooks';
 
 import style from './style.module.scss';
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) => async (result) => {
-    return { props: {} };
-  }
-);
+// export const getServerSideProps = wrapper.getServerSideProps(
+//   (store) => async (result) => {
+//     return { props: {} };
+//   }
+// );
 const LayoutTypeList = (props) => {
   const typeInfo = useAppSelector((state) => {
-    console.log(state, 'useSelector');
+    // console.log(state, 'useSelector');
     return state.type;
   });
   // 生命周期
@@ -24,10 +24,10 @@ const LayoutTypeList = (props) => {
     <div className={style['fix-type-wrapper']}>
       <ul className={style['type-wrapper']}>
         <li>全部</li>
-        {typeInfo.typeList.map((item, index) => {
+        {typeInfo.typeList?.map((item, index) => {
           return (
             <li key={index} className={style['item']}>
-              <span>{item.name}</span>
+              {item.name}
             </li>
           );
         })}

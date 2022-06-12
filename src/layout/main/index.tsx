@@ -1,17 +1,15 @@
 import { useRouter } from 'next/router';
-import { memo, useState, useEffect } from 'react';
+import { memo, useEffect } from 'react';
 
 import style from './style.module.scss';
 
 const LayoutMain = (props: any) => {
   const router = useRouter();
   // 生命周期
-  useEffect(() => {
-    console.log('LayoutMain', router.pathname);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
-    <div className={router.pathname === '/' ? style.padding : ''}>
+    <div className={router.pathname !== '/' ? style.index : ''}>
       {props.view}
     </div>
   );

@@ -1,11 +1,12 @@
 import { memo, useState, useEffect } from 'react';
 
 import style from './style.module.scss';
-const HomePage = () => {
+
+const ChatPage = () => {
   // 生命周期
   useEffect(() => {}, []);
 
-  return <div className={style.a}>HomePage</div>;
+  return <div className={style['chat-wrap']}>ChatPage</div>;
 };
 
-export default memo(HomePage);
+export default memo(ChatPage);

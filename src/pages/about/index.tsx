@@ -1,21 +1,23 @@
 import { NextPage } from 'next';
 import { memo, useState, useEffect } from 'react';
 
-import { wrapper } from '@/stores';
-import store from '@/stores';
-const About: NextPage = () => {
+import store, { wrapper } from '@/stores';
+
+// export const getServerSideProps = wrapper.getServerSideProps(
+//   (store) => (ctx) => {
+//     console.log('+++++++++', ctx);
+//     store.dispatch({ type: 'TICK', payload: 'was set in other page' });
+//     return { props: {} };
+//   }
+// );
+
+const AboutPage: NextPage = () => {
   // 生命周期
   useEffect(() => {
     console.log('anout生命', store.getState().type.typeList);
   }, []);
 
-  return <div>About</div>;
+  return <div>AboutPage</div>;
 };
 
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) => (result) => {
-    console.log('+++++++++', result);
-    store.dispatch({ type: 'TICK', payload: 'was set in other page' });
-  }
-);
-export default memo(About);
+export default memo(AboutPage);

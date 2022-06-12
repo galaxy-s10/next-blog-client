@@ -3,60 +3,60 @@ import { type } from 'os';
 import { useEffect } from 'react';
 import { Provider, useDispatch } from 'react-redux';
 
-import { fetchTypeList } from '@/services/type';
+import { fetchArticleList } from '@/services/article';
 import store, { wrapper } from '@/stores';
-import { changeTypeListAction } from '@/stores/type/actionCreators';
+
+import style from './style.module.scss';
 
 import type { NextPage } from 'next';
 
-console.log('pages/index.tsx');
-
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) => async (result) => {
-    let typeList: any = null;
-    try {
-      typeList = await fetchTypeList({});
-    } catch (error) {
-      console.log(error);
-    }
-    store.dispatch(changeTypeListAction(typeList.data.rows));
-    return { props: {} };
+export async function getServerSideProps(context) {
+  let articleList: any = null;
+  const params = {
+    orderName: 'created_at',
+    orderBy: 'desc',
+    types: 1,
+    nowPage: 1,
+    pageSize: 10,
+  };
+  try {
+    articleList = await fetchArticleList(params);
+  } catch (error) {
+    console.log(error);
   }
-);
+  return { props: { articleList: articleList.data.rows } };
+}
 
 // 这个页面访问不到window
-// export async function getServerSideProps(context) {
-//   console.log('===getServerSideProps===');
-//   let typeList = null;
-//   try {
-//     typeList = await fetchTypeList({});
-//     console.log(store.dispatch(changeTypeListAction(typeList)));
 
-//     console.log(typeList);
-//   } catch (error) {
-//     console.log(error);
-//   }
-//   return {
-//     props: { typeList }, // will be passed to the page component as props
-//   };
-// }
-
-const Index: NextPage = (props) => {
-  // setTimeout(async () => {
-  //   try {
-  //     let typeList = await fetchTypeList({});
-  //     console.log(typeList);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }, 1000);
-
+const Index = (props) => {
+  const { articleList } = props;
   console.log('Index重新渲染');
-  // const dispatch = useDispatch();
-  useEffect(() => {
-    console.log('pages/index.tsx生命周琦', store.getState().app);
-  }, []);
-  // console.log(props, '9999');
-  return <div>123</div>;
+  return (
+    <div className={style['index-wrap']}>
+      {articleList.map((item, index) => {
+        return (
+          <article className={style['item']} key={index}>
+            <img src={item['head_img']} className={style['left']}></img>
+            <div className={style['right']}>
+              <h3 className={style['title']}>{item.title}</h3>
+              <div className={style['tag-list']}>
+                {item.tags.map((tag, index) => {
+                  return (
+                    <span className={style['tag']} key={index}>
+                      {tag.name}
+                    </span>
+                  );
+                })}
+              </div>
+              <div className={style['desc']}>{item.desc}</div>
+              <div className={style['summary']}>{item.title}</div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  );
 };
+
 export default Index;

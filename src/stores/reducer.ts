@@ -19,11 +19,10 @@ const Reducer = (state, action) => {
       ...action.payload, // apply delta from hydration
     };
     // if (state.count.count) nextState.count.count = state.count.count; // preserve count value on client side navigation
-    console.log('nextState', nextState);
     // return nextState;
     return combinedReducer(nextState, action);
   } else {
-    console.log('combinedReducer111', state, action);
+    console.log('combinedReducer111');
     return combinedReducer(state, action);
   }
 };

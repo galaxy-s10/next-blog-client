@@ -1,4 +1,3 @@
-import { configureStore } from '@reduxjs/toolkit';
 import { createWrapper, HYDRATE } from 'next-redux-wrapper';
 import {
   legacy_createStore as createStore,
@@ -22,7 +21,7 @@ const store = createStore(Reducer, composeEnhancers(applyMiddleware(thunk)));
 // const store = configureStore({ reducer: Reducer });
 
 export const makeStore = () => store;
-export const wrapper = createWrapper(makeStore, { debug: true });
+export const wrapper = createWrapper(makeStore, { debug: false });
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

@@ -1,6 +1,8 @@
 import { memo, useState, useEffect, Children } from 'react';
 
-import { getServerSideProps } from '@/pages/index';
+import { fetchTypeList } from '@/services/type';
+import store, { wrapper } from '@/stores';
+import { changeTypeListAction } from '@/stores/type/actionCreators';
 
 import LyAside from './aside';
 import LyFooter from './footer';
@@ -8,10 +10,37 @@ import LyHeader from './header';
 import style from './layout.module.scss';
 import LyMain from './main';
 import LyTypeList from './typelist';
-const Layout = ({ children }) => {
+
+// export const getServerSideProps = wrapper.getServerSideProps(
+//   (store) => async (result) => {
+//     let typeList: any = null;
+//     try {
+//       typeList = await fetchTypeList({});
+//     } catch (error) {
+//       console.log(error);
+//     }
+//     store.dispatch(changeTypeListAction(typeList.data.rows));
+//     return { props: {} };
+//   }
+// );
+
+// export async function getServerSideProps(context) {
+//   let typeList: any = null;
+//   try {
+//     typeList = await fetchTypeList({});
+//   } catch (error) {
+//     console.log(error);
+//   }
+//   console.log('>>>>>');
+//   store.dispatch(changeTypeListAction(typeList.data.rows));
+//   return { props: {} };
+// }
+
+const Layout = (props) => {
+  const { children } = props;
   // 生命周期
   useEffect(() => {
-    console.log('layout生命周期');
+    console.log('layout生命周期', props);
   }, []);
 
   return (
