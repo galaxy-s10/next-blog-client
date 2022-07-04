@@ -9,7 +9,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['resource.lsyboy.cn'],
+    domains: [],
   },
   // eslint: false,
   typescript: {
@@ -17,10 +17,10 @@ const nextConfig = {
   },
   async rewrites() {
     return [
-      // {
-      //   source: '/api/',
-      //   destination: 'http://localhost:3300/',
-      // },
+      {
+        source: '/api/',
+        destination: 'https://hsslive.cn/prodapi/',
+      },
     ];
   },
 };

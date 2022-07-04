@@ -2,11 +2,12 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { memo, useState, useEffect } from 'react';
 
-import NoHeadImg from '@/components/NoHeadImg';
 import { fetchTagArticleList, fetchTagList } from '@/services/tag';
 import { convertDate } from '@/utils/format';
 
 import style from './style.module.scss';
+
+import NoHeadImg from '@/components/NoHeadImg';
 export async function getServerSideProps(ctx) {
   let tagList: any = null;
   let articleList: any = null;
