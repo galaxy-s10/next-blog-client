@@ -11,6 +11,10 @@ const nextConfig = {
   images: {
     domains: ['resource.lsyboy.cn'],
   },
+  // eslint: false,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   async rewrites() {
     return [
       // {
