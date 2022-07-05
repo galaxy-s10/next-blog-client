@@ -1,0 +1,6 @@
+// 注意，这里面不要放全局的样式，比如body、p、span这些，
+// 因为这里面注入到vue组件的样式都是有作用域的，即<style scoped>body{color:white}</style>这种
+// 样式不会影响到全局的body，只会影响组件内的body，但是很明显组件里面没有body标签。
+@import './common.scss';
+@import './mixin.scss';
+@import './utils.scss';

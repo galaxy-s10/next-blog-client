@@ -1,13 +1,15 @@
-import '@/styles/globals.scss';
-import '@/styles/normalize.css';
+import { Provider } from 'react-redux';
 
 import store, { wrapper } from '@/stores';
-import { useAppSelector } from '@/stores/hooks';
 
 import type { AppProps } from 'next/app';
+import '@/styles/normalize.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
+  );
 }
-export default MyApp;
-// export default wrapper.withRedux(MyApp);
+export default wrapper.withRedux(MyApp);

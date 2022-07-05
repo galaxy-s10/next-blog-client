@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+import { H5_APP_STRATEGY_URL } from '@/constant';
+
 const config = {
-  // baseURL: '/api/', // 本地开发：/api/，线上正式服：/prodapi/，线上测试服：/betaapi/
+  baseURL: H5_APP_STRATEGY_URL,
   timeout: 5000,
 };
 

@@ -6,9 +6,7 @@ const defaultState = Map({
   isGlobalLoading: false, // 全局loading
   jsonData: {}, // 服务器下发的json配置
   plan_id: null, // 埋点用
-  isTest:
-    window.location.href.indexOf('test') !== -1 ||
-    process.env.NODE_ENV === 'development', // 是否是测试或者本地开发模式
+  isTest: false, // 是否是测试或者本地开发模式
   isLegalUser: true, // 是否是合法用户（对应地区），是的话true，不是就false
 });
 
@@ -22,6 +20,9 @@ function reducer(state = defaultState, action) {
       return state.set('jsonData', action.data);
     case actionTypes.CHANGE_PLAN_ID:
       return state.set('plan_id', action.data);
+    case actionTypes.CHANGE_IS_TEST:
+      console.log('设置isTest');
+      return state.set('isTest', action.data);
     default:
       return state;
   }

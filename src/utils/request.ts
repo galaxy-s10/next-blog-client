@@ -1,10 +1,11 @@
 import axios from 'axios';
 
+import { H5_APP_STRATEGY_URL } from '@/constant';
 import { isBrowser } from '@/utils';
 import cache from '@/utils/cache';
 
 const config = {
-  baseURL: 'http://localhost:3300/', // 本地开发：/api/，线上正式服：/prodapi/，线上测试服：/betaapi/
+  baseURL: H5_APP_STRATEGY_URL, // 本地开发：/api/，线上正式服：/prodapi/，线上测试服：/betaapi/
   timeout: 5000,
 };
 const service: any = axios.create(config);

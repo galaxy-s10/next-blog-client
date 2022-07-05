@@ -8,6 +8,7 @@
   $repeat: no-repeat,
   $size: contain
 ) {
+  // background-image: #{$url};
   background-image: #{url($url)};
   background-position: $x $y;
   background-size: $size;
@@ -58,12 +59,11 @@
 }
 
 // 箭头
-@mixin arrow($position, $size: 5px) {
+@mixin arrow($position) {
   position: relative;
   display: inline-block;
-  width: $size;
-  height: $size;
   &::after {
+    // & .arrow {
     position: absolute;
     top: 0;
     left: 0;
@@ -186,7 +186,7 @@
   width: $px;
   height: $px;
   border-radius: 50%;
-  opacity: 0.6;
+  opacity: 0.7;
   @keyframes big {
     0%,
     100% {

@@ -1,10 +1,10 @@
 import { useRoute } from 'vue-router';
 
 import { H5_APP_KEY, H5_APP_SERVICE_ID } from '@/constant';
+import { decrypt, encrypt } from '@/utils/crypto';
 
 import { getData } from '@/server';
 import { useAppStore } from '@/store/app';
-import { decrypt, encrypt } from '@/utils/crypto';
 
 export const useGetJson = async () => {
   try {

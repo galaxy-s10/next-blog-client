@@ -3,6 +3,7 @@ import {
   changeIsLegalUserAction,
   changeJsonDataAction,
   changePlanIdAction,
+  changeIsTestAction,
 } from './actionCreators';
 import reducer from './reducer';
 
@@ -12,4 +13,5 @@ export {
   changeIsLegalUserAction,
   changeJsonDataAction,
   changePlanIdAction,
+  changeIsTestAction,
 };

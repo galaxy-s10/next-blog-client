@@ -80,3 +80,20 @@ export const isBrowser = (): boolean =>
   typeof window !== 'undefined' &&
   typeof window.document !== 'undefined' &&
   typeof window.document.createElement !== 'undefined';
+
+/**
+ * 获取地址栏参数
+ */
+export const GetQuery: any = () => {
+  const url = decodeURI(decodeURI(window.location.href));
+  const str = url.split('?')[1];
+  const obj = {};
+  if (str) {
+    const keys = str.split('&');
+    keys.forEach((item) => {
+      const arr = item.split('=');
+      obj[arr[0]] = arr[1];
+    });
+  }
+  return obj;
+};

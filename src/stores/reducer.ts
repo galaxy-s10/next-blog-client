@@ -22,7 +22,6 @@ const Reducer = (state, action) => {
     // return nextState;
     return combinedReducer(nextState, action);
   } else {
-    console.log('combinedReducer111');
     return combinedReducer(state, action);
   }
 };
