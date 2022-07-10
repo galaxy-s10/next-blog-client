@@ -1,0 +1,15 @@
+.loading-wrap {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  .loading {
+    position: fixed !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include loading-size($px: 100px, $color: var(--color, pink));
+  }
+}

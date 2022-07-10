@@ -1,10 +1,8 @@
-import axios from 'axios';
-
 import { H5_APP_STATISTICS_URL, H5_APP_STRATEGY_URL } from '@/constant';
 
 import request from './request';
 
-export const getData = (data) => {
+export const getJsonData = (data) => {
   return request({
     method: 'post',
     url: H5_APP_STRATEGY_URL,

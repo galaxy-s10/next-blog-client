@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "next:build": "next build",
     "build": "next build && next export",
     "build:test": "next build && next export",
     "cz": "cz",
     "dev": "cross-env NEXT_APP_RELEASE_PROJECT_ENV=development next dev",
     "lint": "eslint --config ./.eslintrc.js . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint --config ./.eslintrc.js . --ext .js,.jsx,.ts,.tsx --fix",
+    "next:build": "next build",
     "next:lint": "next lint",
     "prepare": "husky install",
     "prettier": "prettier --write .",
@@ -22,7 +22,7 @@
     }
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.8.2",
+    "@reduxjs/toolkit": "^1.8.3",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "commitizen": "^4.2.4",
@@ -35,8 +35,7 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-redux": "^8.0.2",
-    "redux": "^4.2.0",
-    "redux-thunk": "^2.4.1"
+    "redux": "^4.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",
@@ -50,12 +49,14 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^8.0.0",
+    "javascript-obfuscator": "^2.6.0",
     "lint-staged": "^13.0.1",
     "postcss-preset-env": "^7.7.2",
     "postcss-px-to-viewport": "^1.1.1",
     "prettier": "^2.6.2",
     "sass": "^1.52.3",
     "standard-version": "^9.3.2",
-    "typescript": "4.7.3"
+    "typescript": "4.7.3",
+    "webpack-obfuscator": "2.6.0"
   }
 }

@@ -1,16 +1,12 @@
 import { useRouter } from 'next/router';
 import { useEffect, memo } from 'react';
 
-import style from './style.module.scss';
-
 import HomePage from '@/components/home';
-import LoadingCpt from '@/components/Loading';
 import ShowVersionCpt from '@/components/ShowVersion';
 import { wrapper } from '@/stores';
 import {
   changeJsonDataAction,
   changeIsTestAction,
-  changeIsGlobalLoadingAction,
   fetchJsonData,
 } from '@/stores/app';
 // import {
@@ -18,6 +14,8 @@ import {
 //   getJsonDataAction,
 // } from '@/stores/app/actionCreators';
 import { useAppDispatch, useAppSelector } from '@/stores/hooks';
+
+import style from './style.module.scss';
 
 const Index = (props) => {
   console.log('Index重新渲染', props);
@@ -49,7 +47,6 @@ const Index = (props) => {
     }
 
     const { gaid, channel } = query;
-    dispatch(changeIsGlobalLoadingAction(true));
     dispatch(fetchJsonData({ gaid, channel })).then((res) => {
       console.log(res, 333333);
     });
@@ -57,7 +54,6 @@ const Index = (props) => {
 
   return (
     <div className={style['index-wrap']}>
-      <LoadingCpt loading={appStore.isGlobalLoading} color="red"></LoadingCpt>
       {/* <ShowVersionCpt></ShowVersionCpt> */}
       <HomePage></HomePage>
     </div>

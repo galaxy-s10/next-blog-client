@@ -1,8 +1,9 @@
 import { Provider } from 'react-redux';
 
-import store, { wrapper } from '@/stores';
-
 import type { AppProps } from 'next/app';
+
+import { store, wrapper } from '@/stores';
+
 import '@/styles/normalize.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
