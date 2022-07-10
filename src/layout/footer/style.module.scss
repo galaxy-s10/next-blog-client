@@ -1,0 +1,33 @@
+@import '@/styles/constant.scss';
+@import '@/styles/main.scss';
+
+@keyframes run {
+  0% {
+    transform: rotate(15deg);
+  }
+  25% {
+    transform: translateY(4px);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: rotate(15deg);
+  }
+}
+.footer {
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  .beianhao {
+    color: $theme-color5;
+    text-decoration: none;
+  }
+  .ani {
+    display: inline-block;
+    animation: run 2s infinite linear;
+  }
+}

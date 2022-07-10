@@ -2,9 +2,13 @@ import { HYDRATE } from 'next-redux-wrapper';
 import { combineReducers } from 'redux';
 
 import { reducer as appReducer } from './app';
+import { reducer as articleReducer } from './article';
+import { reducer as typeReducer } from './type';
 
 const combinedReducer = combineReducers({
   app: appReducer,
+  article: articleReducer,
+  type: typeReducer,
 });
 
 // https://github.com/vercel/next.js/blob/canary/examples/with-redux-wrapper/store/store.js

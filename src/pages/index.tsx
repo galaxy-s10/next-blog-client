@@ -1,67 +1,62 @@
-import { useRouter } from 'next/router';
-import { useEffect, memo } from 'react';
+import { type } from 'os';
+
+import { useEffect } from 'react';
+import { Provider, useDispatch } from 'react-redux';
+
+import { fetchArticleList } from '@/services/article';
+import store, { wrapper } from '@/stores';
 
 import style from './style.module.scss';
 
-import HomePage from '@/components/home';
-import LoadingCpt from '@/components/Loading';
-import ShowVersionCpt from '@/components/ShowVersion';
-import { wrapper } from '@/stores';
-import {
-  changeJsonDataAction,
-  changeIsTestAction,
-  changeIsGlobalLoadingAction,
-  fetchJsonData,
-} from '@/stores/app';
-// import {
-//   changeIsTestAction,
-//   getJsonDataAction,
-// } from '@/stores/app/actionCreators';
-import { useAppDispatch, useAppSelector } from '@/stores/hooks';
+import type { NextPage } from 'next';
+
+export async function getServerSideProps(context) {
+  let articleList: any = null;
+  const params = {
+    orderName: 'created_at',
+    orderBy: 'desc',
+    types: 1,
+    nowPage: 1,
+    pageSize: 10,
+  };
+  try {
+    articleList = await fetchArticleList(params);
+  } catch (error) {
+    console.log(error);
+  }
+  return { props: { articleList: articleList.data.rows } };
+}
+
+// 这个页面访问不到window
 
 const Index = (props) => {
-  console.log('Index重新渲染', props);
-  const dispatch = useAppDispatch();
-  // 使用useRouter会触发两次组件渲染（不可避免），可判断isReady
-  const { query, isReady } = useRouter();
-  const appStore = useAppSelector((state) => state.app);
-  // const { isTest, isLegalUser } = useAppSelector((state) => ({
-  //   isTest: state.get('isTest'),
-  //   isLegalUser: state.get('isLegalUser'),
-  // }));
-  // console.log('isTest, isLegalUser ', isTest, isLegalUser);
-  useEffect(() => {
-    console.log('pages-index生命周期');
-    dispatch(
-      changeIsTestAction(
-        window.location.href.indexOf('test') !== -1 ||
-          process.env.NODE_ENV === 'development'
-      )
-    );
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (!isReady) {
-      console.log('没准备');
-      return;
-    } else {
-      console.log('准备好了');
-    }
-
-    const { gaid, channel } = query;
-    dispatch(changeIsGlobalLoadingAction(true));
-    dispatch(fetchJsonData({ gaid, channel })).then((res) => {
-      console.log(res, 333333);
-    });
-  }, [dispatch, isReady, query]);
-
+  const { articleList } = props;
+  console.log('Index重新渲染');
   return (
     <div className={style['index-wrap']}>
-      <LoadingCpt loading={appStore.isGlobalLoading} color="red"></LoadingCpt>
-      {/* <ShowVersionCpt></ShowVersionCpt> */}
-      <HomePage></HomePage>
+      {articleList.map((item, index) => {
+        return (
+          <article className={style['item']} key={index}>
+            <img src={item['head_img']} className={style['left']}></img>
+            <div className={style['right']}>
+              <h3 className={style['title']}>{item.title}</h3>
+              <div className={style['tag-list']}>
+                {item.tags.map((tag, index) => {
+                  return (
+                    <span className={style['tag']} key={index}>
+                      {tag.name}
+                    </span>
+                  );
+                })}
+              </div>
+              <div className={style['desc']}>{item.desc}</div>
+              <div className={style['summary']}>{item.title}</div>
+            </div>
+          </article>
+        );
+      })}
     </div>
   );
 };
 
-export default memo(Index);
+export default Index;

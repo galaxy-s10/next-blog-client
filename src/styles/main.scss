@@ -1,0 +1,63 @@
+@import './constant.scss';
+
+/* 响应式布局 - 小于 1200px */
+@media screen and (max-width: 1200px) {
+}
+
+/* 响应式布局 - 小于 992px */
+@media screen and (max-width: 992px) {
+  .nav-menu {
+    display: none !important;
+  }
+  .nav-menu-mini {
+    display: block !important;
+  }
+}
+
+/* 响应式布局 - 小于 540px */
+@media screen and (max-width: 540px) {
+  .fix-header-wrapper,
+  .fix-type-wrapper,
+  .main-wrapper {
+    box-sizing: border-box;
+    padding: 0 10px;
+  }
+  .main-wrapper {
+    .left {
+      width: 100% !important;
+    }
+    .right {
+      display: none !important;
+    }
+  }
+  .article-left {
+    margin: 0 !important;
+  }
+}
+
+/* 响应式布局 - 大于540px */
+@media screen and (min-width: 540px) {
+  .header-wrapper,
+  .main-wrapper,
+  .type-wrapper {
+    width: 100%;
+  }
+}
+
+/* 响应式布局 - 大于 992px */
+@media screen and (min-width: 992px) {
+  .header-wrapper,
+  .main-wrapper,
+  .type-wrapper {
+    width: 960px;
+  }
+}
+
+/* 响应式布局 - 大于 1200px */
+@media screen and (min-width: 1200px) {
+  .header-wrapper,
+  .main-wrapper,
+  .type-wrapper {
+    width: 1140px;
+  }
+}
