@@ -49,7 +49,9 @@ const articleListCpt = (v) => {
             </Link>
           ) : (
             <Link href={`/article/${item.id}`} className={style['head-img']}>
-              <NoHeadImg />
+              <div>
+                <NoHeadImg />
+              </div>
             </Link>
           )}
         </div>
@@ -89,7 +91,7 @@ const TagPage = (props) => {
   const router = useRouter();
   // 生命周期
   useEffect(() => {
-    console.log(router, 9888);
+    console.log('TagPage生命周期');
   }, []);
 
   return (

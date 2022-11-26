@@ -12,19 +12,17 @@ import style from './style.module.scss';
 // );
 const LayoutTypeList = (props) => {
   const typeInfo = useAppSelector((state) => {
-    // console.log(state, 'useSelector');
     return state.type;
   });
+
   // 生命周期
-  useEffect(() => {
-    console.log(store.getState().type, '000');
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className={style['fix-type-wrapper']}>
       <ul className={style['type-wrapper']}>
         <li>全部</li>
-        {typeInfo.list?.map((item, index) => {
+        {typeInfo.list.map((item, index) => {
           return (
             <li key={index} className={style['item']}>
               {item.name}

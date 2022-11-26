@@ -10,20 +10,24 @@ import { fetchJsonData, changeTypeListAction } from '@/stores/type';
 
 import type { AppProps } from 'next/app';
 
-console.log('pages/_app.tsx', store.getState().app);
-
 function MyApp({ Component, pageProps }: AppProps) {
-  const typeInfo = useAppSelector((state) => {
-    return state.type;
-  });
-  // console.log('pagePropspageProps22', typeInfo, pageProps);
+  const typeStore = useAppSelector((state) => state.type);
   return (
     <Layout>
       <Component {...pageProps} />
     </Layout>
   );
 }
+// https://nextjs.org/docs/advanced-features/custom-app
+export async function getServerSideProps() {
+  console.log(
+    'App目前不支持 Next.js数据获取方法，如getStaticProps或getServerSideProps。'
+  );
+}
 MyApp.getInitialProps = wrapper.getInitialAppProps((store) => async (ctx) => {
+  const typelist = store.getState().type;
+  if (typelist.list.length) return;
+  console.log('MyApp.getInitialProps', store.getState().type);
   let typeList: any = null;
   try {
     // typeList = await fetchTypeList({});
@@ -33,9 +37,8 @@ MyApp.getInitialProps = wrapper.getInitialAppProps((store) => async (ctx) => {
   } catch (error) {
     console.log(error);
   }
-  console.log('llllllllllllll', typeList);
-  // store.dispatch(changeTypeListAction(typeList.rows));
-  return { pageProps: { typeList: typeList.rows } };
+  return { pageProps: { typeList: typeList } };
 });
+
 // export default MyApp;
 export default wrapper.withRedux(MyApp);

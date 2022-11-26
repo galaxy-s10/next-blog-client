@@ -16,9 +16,10 @@ export async function getServerSideProps(context) {
 
 const WorksPage = (props) => {
   const { worksList } = props;
+
   // 生命周期
   useEffect(() => {
-    console.log(props, 'llll;;;');
+    console.log('WorksPage生命周期', props);
   }, []);
 
   return (

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build && next export",
+    "build": "next build",
     "build:test": "next build && next export",
     "cz": "cz",
     "dev": "cross-env NEXT_APP_RELEASE_PROJECT_ENV=development next dev",

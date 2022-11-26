@@ -16,24 +16,24 @@ const nextConfig = {
   webpack: (config) => {
     config.resolve.alias['@'] = path.resolve(__dirname);
     if (process.env.NODE_ENV === 'production') {
-      config.optimization.splitChunks = {
-        cacheGroups: {
-          defaultVendors: {
-            // 重写默认的defaultVendors
-            chunks: 'initial',
-            maxSize: 100 * 1024,
-            test: /[\\/]node_modules[\\/]/,
-            priority: -20,
-          },
-          default: {
-            // 重写默认的default
-            chunks: 'all',
-            maxSize: 100 * 1024,
-            minChunks: 2, // 至少被minChunks个入口文件引入了minChunks次。
-            priority: -10,
-          },
-        },
-      };
+      // config.optimization.splitChunks = {
+      //   cacheGroups: {
+      //     defaultVendors: {
+      //       // 重写默认的defaultVendors
+      //       chunks: 'initial',
+      //       maxSize: 100 * 1024,
+      //       test: /[\\/]node_modules[\\/]/,
+      //       priority: -20,
+      //     },
+      //     default: {
+      //       // 重写默认的default
+      //       chunks: 'all',
+      //       maxSize: 100 * 1024,
+      //       minChunks: 2, // 至少被minChunks个入口文件引入了minChunks次。
+      //       priority: -10,
+      //     },
+      //   },
+      // };
       // config.plugins.push(
       // );
     }
@@ -45,6 +45,11 @@ const nextConfig = {
     domains: [],
   },
   // eslint: false,
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
+  },
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -52,7 +57,7 @@ const nextConfig = {
     return [
       {
         source: '/api/',
-        destination: 'https://hsslive.cn/prodapi/',
+        destination: 'https://api.hsslive.cn/prodapi/',
       },
     ];
   },

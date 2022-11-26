@@ -14,7 +14,7 @@ import store, { wrapper } from '@/stores';
 const AboutPage: NextPage = () => {
   // 生命周期
   useEffect(() => {
-    console.log('anout生命', store.getState().type.typeList);
+    console.log('pages/about生命周期');
   }, []);
 
   return <div>AboutPage</div>;

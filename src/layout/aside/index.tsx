@@ -20,7 +20,7 @@ const LayoutAside = () => {
         <div className={style['bgc']}></div>
         <div className={style['user-avatar']}>
           <Image
-            src={require('/public/assets/img/default_avatar.webp')}
+            src={require('@/assets/img/default_avatar.webp')}
             alt=""
           ></Image>
         </div>
@@ -47,7 +47,7 @@ const LayoutAside = () => {
                 <div key={index} className={style['item']}>
                   <div className={style['head-img']}>
                     <Image
-                      src={require('/public/assets/img/default_avatar.webp')}
+                      src={require('@/assets/img/default_avatar.webp')}
                       alt=""
                     ></Image>
                   </div>

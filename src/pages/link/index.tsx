@@ -1,9 +1,9 @@
 import NextImage from 'next/image';
 import { memo, useState, useEffect } from 'react';
 
-import style from './style.module.scss';
-
 import { fetchLinkList } from '@/services/link';
+
+import style from './style.module.scss';
 
 export async function getServerSideProps(context) {
   let linkList: any = null;
@@ -16,9 +16,10 @@ export async function getServerSideProps(context) {
 }
 const LinkPage = (props) => {
   const { linkList } = props;
+
   // 生命周期
   useEffect(() => {
-    console.log(props, 'llll;;;');
+    console.log(props);
   }, []);
 
   return (

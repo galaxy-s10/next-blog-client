@@ -84,7 +84,7 @@ export const isBrowser = (): boolean =>
 /**
  * 获取地址栏参数
  */
-export const GetQuery: any = () => {
+export const getUrlQuery: any = () => {
   const url = decodeURI(decodeURI(window.location.href));
   const str = url.split('?')[1];
   const obj = {};

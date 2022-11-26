@@ -2,7 +2,6 @@ import { memo, useState, useEffect, Children } from 'react';
 
 import { fetchTypeList } from '@/services/type';
 import store, { wrapper } from '@/stores';
-import { changeTypeListAction } from '@/stores/type/actionCreators';
 
 import LyAside from './aside';
 import LyFooter from './footer';
@@ -10,6 +9,8 @@ import LyHeader from './header';
 import style from './layout.module.scss';
 import LyMain from './main';
 import LyTypeList from './typelist';
+
+import { changeTypeListAction } from '@/stores/type/actionCreators';
 
 // export const getServerSideProps = wrapper.getServerSideProps(
 //   (store) => async (result) => {
@@ -38,6 +39,7 @@ import LyTypeList from './typelist';
 
 const Layout = (props) => {
   const { children } = props;
+
   // 生命周期
   useEffect(() => {
     console.log('layout生命周期', props);
@@ -47,7 +49,7 @@ const Layout = (props) => {
     <div>
       <div>
         <LyHeader />
-        {/* <LyTypeList /> */}
+        <LyTypeList />
         <div className={style['main-wrapper']}>
           <div className={style['left']}>
             <LyMain view={children} />
