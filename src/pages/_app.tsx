@@ -1,14 +1,15 @@
 // import '@/styles/global.scss';
-import '@/styles/normalize.css';
 
 import Layout from '@/layout';
 // import { fetchTypeList } from '@/services/type';
 import store, { wrapper } from '@/stores';
 import { useAppSelector } from '@/stores/hooks';
 import { fetchJsonData, changeTypeListAction } from '@/stores/type';
-// import { changeTypeListAction } from '@/stores/type/actionCreators';
 
+// import { changeTypeListAction } from '@/stores/type/actionCreators';
 import type { AppProps } from 'next/app';
+
+import '@/styles/normalize.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const typeStore = useAppSelector((state) => state.type);
