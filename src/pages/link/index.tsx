@@ -1,5 +1,4 @@
-import NextImage from 'next/image';
-import { memo, useState, useEffect } from 'react';
+import { memo, useEffect } from 'react';
 
 import { fetchLinkList } from '@/services/link';
 
@@ -32,12 +31,24 @@ const LinkPage = (props) => {
             <>
               {linkList.map((item, index) => {
                 return (
-                  <li key={index} className={style['li-item-wrap']}>
-                    <a className={style['li-item-link']} target="_blank">
-                      <img src={item.avatar} className={style['user-avatar']} />
+                  <li
+                    key={index}
+                    className={style['li-item-wrap']}
+                  >
+                    <a
+                      className={style['li-item-link']}
+                      target="_blank"
+                    >
+                      <img
+                        src={item.avatar}
+                        className={style['user-avatar']}
+                      />
                       <div className={style['desc']}>
                         <span>{item.name}</span>
-                        <span className={style['txt']} title="item.desc">
+                        <span
+                          className={style['txt']}
+                          title="item.desc"
+                        >
                           {item.desc}
                         </span>
                       </div>

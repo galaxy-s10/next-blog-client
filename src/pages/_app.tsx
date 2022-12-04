@@ -1,4 +1,5 @@
 // import '@/styles/global.scss';
+import '@/styles/normalize.css';
 
 import Layout from '@/layout';
 // import { fetchTypeList } from '@/services/type';
@@ -9,8 +10,6 @@ import { fetchJsonData, changeTypeListAction } from '@/stores/type';
 // import { changeTypeListAction } from '@/stores/type/actionCreators';
 import type { AppProps } from 'next/app';
 
-import '@/styles/normalize.css';
-
 function MyApp({ Component, pageProps }: AppProps) {
   const typeStore = useAppSelector((state) => state.type);
   return (
@@ -19,12 +18,14 @@ function MyApp({ Component, pageProps }: AppProps) {
     </Layout>
   );
 }
+
 // https://nextjs.org/docs/advanced-features/custom-app
 export async function getServerSideProps() {
   console.log(
     'App目前不支持 Next.js数据获取方法，如getStaticProps或getServerSideProps。'
   );
 }
+
 MyApp.getInitialProps = wrapper.getInitialAppProps((store) => async (ctx) => {
   const typelist = store.getState().type;
   if (typelist.list.length) return;

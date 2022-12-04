@@ -4,8 +4,7 @@ import { isBrowser } from '@/utils';
 import cache from '@/utils/cache';
 
 const config = {
-  baseURL: 'https://hsslive.cn/prodapi/', // 本地开发：/api/，线上正式服：/prodapi/，线上测试服：/betaapi/
-  // baseURL: 'https://api.hsslive.cn/prodapi/', // 本地开发：/api/，线上正式服：/prodapi/，线上测试服：/betaapi/
+  baseURL: 'https://api.hsslive.cn/prodapi/', // 本地开发：/api/，线上正式服：/prodapi/，线上测试服：/betaapi/
   // baseURL: '/api/', // 本地开发：/api/，线上正式服：/prodapi/，线上测试服：/betaapi/
   timeout: 5000,
 };

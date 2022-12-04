@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { memo, useState, useEffect } from 'react';
+import { memo, useEffect } from 'react';
 
 import NoHeadImg from '@/components/NoHeadImg';
 import { fetchTagArticleList, fetchTagList } from '@/services/tag';
@@ -37,7 +37,10 @@ export async function getServerSideProps(ctx) {
 const articleListCpt = (v) => {
   return v.map((item, index) => {
     return (
-      <article key={index} className={style['article-item']}>
+      <article
+        key={index}
+        className={style['article-item']}
+      >
         <div className={style['article-left']}>
           {item['head_img'] ? (
             <Link href={`/article/${item.id}`}>
@@ -48,7 +51,10 @@ const articleListCpt = (v) => {
               />
             </Link>
           ) : (
-            <Link href={`/article/${item.id}`} className={style['head-img']}>
+            <Link
+              href={`/article/${item.id}`}
+              className={style['head-img']}
+            >
               <div>
                 <NoHeadImg />
               </div>

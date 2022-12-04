@@ -2,8 +2,13 @@
   "name": "next-blog-client",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/galaxy-s10/next-blog-client"
+  },
   "scripts": {
     "build": "next build",
+    "build:all": "next build && next export",
     "build:test": "next build && next export",
     "cz": "cz",
     "dev": "cross-env NEXT_APP_RELEASE_PROJECT_ENV=development next dev",
@@ -24,6 +29,9 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",
     "axios": "^0.27.2",
+    "billd-html-webpack-plugin": "latest",
+    "billd-scss": "latest",
+    "billd-utils": "latest",
     "dayjs": "^1.11.3",
     "next": "12.1.6",
     "next-redux-wrapper": "^7.0.5",
@@ -46,14 +54,12 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^8.0.0",
-    "javascript-obfuscator": "^2.6.0",
     "lint-staged": "^13.0.1",
     "postcss-preset-env": "^7.7.2",
     "postcss-px-to-viewport": "^1.1.1",
     "prettier": "^2.6.2",
     "sass": "^1.52.3",
     "standard-version": "^9.3.2",
-    "typescript": "4.7.3",
-    "webpack-obfuscator": "2.6.0"
+    "typescript": "4.7.3"
   }
 }

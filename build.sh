@@ -6,7 +6,7 @@
 # Email: 2274751790@qq.com
 # FilePath: /next-blog-client/build.sh
 # Github: https://github.com/galaxy-s10
-# LastEditTime: 2022-11-27 14:46:21
+# LastEditTime: 2022-12-04 16:09:19
 # LastEditors: shuisheng
 ###
 
@@ -65,4 +65,4 @@ echo 开始安装依赖:
 pnpm install
 
 echo 开始构建:
-npx cross-env JENKINS_WORKSPACE=$3 nuxt build
+npx cross-env JENKINS_WORKSPACE=$3 next build
