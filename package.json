@@ -1,6 +1,6 @@
 {
   "name": "next-blog-client",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "repository": {
     "type": "git",
@@ -9,8 +9,12 @@
   "scripts": {
     "build": "next build",
     "build:all": "next build && next export",
-    "build:test": "next build && next export",
+    "build:beta": "next build",
+    "build:prod": "next build",
+    "copy": "node ./deploy/handleGiteeJenkins.mjs",
     "cz": "cz",
+    "deploy:beta": "node ./deploy/index.js --beta",
+    "deploy:prod": "node ./deploy/index.js --prod",
     "dev": "cross-env NEXT_APP_RELEASE_PROJECT_ENV=development next dev",
     "lint": "eslint --config ./.eslintrc.js . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint --config ./.eslintrc.js . --ext .js,.jsx,.ts,.tsx --fix",
@@ -29,6 +33,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",
     "axios": "^0.27.2",
+    "billd-deploy": "^1.0.23",
     "billd-html-webpack-plugin": "latest",
     "billd-scss": "latest",
     "billd-utils": "latest",
@@ -38,7 +43,8 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-redux": "^8.0.2",
-    "redux": "^4.2.0"
+    "redux": "^4.2.0",
+    "trash": "^8.1.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",

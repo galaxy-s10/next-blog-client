@@ -1,12 +1,19 @@
-/** @type {import('next').NextConfig} */
 const path = require('path');
 
 const BilldHtmlWebpackPlugin = require('billd-html-webpack-plugin');
+
+const pkg = require('./package.json');
+const isProd = process.env.NODE_ENV === 'production';
+
+/** @type {import('next').NextConfig} */
 const nextConfig = {
+  assetPrefix: isProd
+    ? `https://resource.hsslive.cn/${pkg.name}/${pkg.version}/`
+    : undefined,
   reactStrictMode: false,
   env: {
-    PROJECT_NAME: require('./package.json').name,
-    PROJECT_VERSION: require('./package.json').version,
+    PROJECT_NAME: pkg.name,
+    PROJECT_VERSION: pkg.version,
     PROJECT_LASTBUNDLE_TIME: new Date().toLocaleString(),
   },
   sassOptions: {
@@ -48,12 +55,12 @@ const nextConfig = {
 
   images: {
     domains: [],
-    unoptimized: true,
+    // unoptimized: true,
   },
   experimental: {
-    images: {
-      unoptimized: true,
-    },
+    // images: {
+    //   unoptimized: true,
+    // },
   },
   // eslint: false,
   eslint: {

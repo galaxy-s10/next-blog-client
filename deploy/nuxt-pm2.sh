@@ -1,26 +1,22 @@
 #!/usr/bin/env bash
 ###
 # Author: shuisheng
-# Date: 2022-04-26 01:54:48
-# Description: https://github.com/galaxy-s10/sh/blob/master/pm2.sh
+# Date: 2022-08-09 12:55:48
+# Description: https://github.com/galaxy-s10/sh/
 # Email: 2274751790@qq.com
-# FilePath: /next-blog-client/pm2.sh
+# FilePath: /next-blog-client/deploy/nuxt-pm2.sh
 # Github: https://github.com/galaxy-s10
-# LastEditTime: 2022-11-27 14:47:33
 # LastEditors: shuisheng
+# LastEditTime: 2024-03-09 13:58:28
 ###
 
-# 生成头部文件快捷键：ctrl+cmd+i
+# 生成头部文件快捷键: ctrl+cmd+i
 
-# 静态部署的项目，一般流程是在jenkins里面执行build.sh进行构建，
-# 构建完成后会连接ssh，执行/node/sh/frontend.sh，frontend.sh会将构建的完成资源复制到/node/xxx。
-# 复制完成后，frontend.sh会执行清除buff/cache操作
+# nuxt项目, 一般流程是在jenkins里面执行nuxt-build.sh进行构建,
+# 构建完成后会连接ssh, 执行/node/sh/nuxt.sh, nuxt.sh会将构建的完成资源复制到/node/xxx, 并且执行/node/xxx/nuxt-pm2.sh
+# 最后, 服务器的/node/sh/nuxt.sh会执行清除buff/cache操作
 
-# node项目，一般流程是在jenkins里面执行build.sh进行构建，
-# 构建完成后会连接ssh，执行/node/sh/node.sh，node.sh会将构建的完成资源复制到/node/xxx，并且执行/node/xxx/pm2.sh。
-# 最后，node.sh会执行清除buff/cache操作
-
-# 注意:JOBNAME=$1,这个等号左右不能有空格！
+# 注意: JOBNAME=$1, 这个等号左右不能有空格!
 JOBNAME=$1      #约定$1为任务名
 ENV=$2          #约定$2为环境
 WORKSPACE=$3    #约定$3为Jenkins工作区
@@ -35,7 +31,7 @@ echo 查看npm版本:
 npm -v
 
 echo 设置npm淘宝镜像:
-npm config set registry https://registry.npm.taobao.org/
+npm config set registry https://registry.npmmirror.com/
 
 echo 查看当前npm镜像:
 npm get registry
@@ -51,7 +47,7 @@ echo 查看pnpm版本:
 pnpm -v
 
 echo 设置pnpm淘宝镜像:
-pnpm config set registry https://registry.npm.taobao.org/
+pnpm config set registry https://registry.npmmirror.com/
 pnpm config set @billd:registry http://registry.hsslive.cn/
 
 echo 查看当前pnpm镜像:
@@ -81,6 +77,9 @@ echo 删除旧的pm2服务:
 pm2 del $JOBNAME-$ENV-$PORT
 
 echo 使用pm2维护:
-pm2 start npm --name $JOBNAME-$ENV-$PORT -- run start -- -p $PORT
-pm2 save
-# pm2 start npm --name $JOBNAME -- run dev
+# pm2 start './node_modules/nuxt/bin/nuxt.js' --name nuxt-blog-client-null-3000 -i 1 -- start
+# pm2 start './node_modules/nuxt/bin/nuxt.js' --name $JOBNAME-$ENV-$PORT -i -1 -- start
+pm2 start npm --name $JOBNAME-$ENV-$PORT -i -1 -- run start -- -p $PORT
+
+# pm2-runtime start './node_modules/nuxt/bin/nuxt.js' --name nuxt-blog-client-null-3000 -i 2 -- start
+# pm2-runtime start './node_modules/nuxt/bin/nuxt.js' --name $JOBNAME-$ENV-$PORT -i 2 -- start
