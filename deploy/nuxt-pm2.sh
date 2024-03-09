@@ -7,7 +7,7 @@
 # FilePath: /next-blog-client/deploy/nuxt-pm2.sh
 # Github: https://github.com/galaxy-s10
 # LastEditors: shuisheng
-# LastEditTime: 2024-03-09 13:58:28
+# LastEditTime: 2024-03-09 19:14:27
 ###
 
 # 生成头部文件快捷键: ctrl+cmd+i
@@ -79,7 +79,7 @@ pm2 del $JOBNAME-$ENV-$PORT
 echo 使用pm2维护:
 # pm2 start './node_modules/nuxt/bin/nuxt.js' --name nuxt-blog-client-null-3000 -i 1 -- start
 # pm2 start './node_modules/nuxt/bin/nuxt.js' --name $JOBNAME-$ENV-$PORT -i -1 -- start
-pm2 start npm --name $JOBNAME-$ENV-$PORT -i -1 -- run start -- -p $PORT
+pm2 start npm --name $JOBNAME-$ENV-$PORT -i 1 -- run start -- -p $PORT
 
 # pm2-runtime start './node_modules/nuxt/bin/nuxt.js' --name nuxt-blog-client-null-3000 -i 2 -- start
 # pm2-runtime start './node_modules/nuxt/bin/nuxt.js' --name $JOBNAME-$ENV-$PORT -i 2 -- start
