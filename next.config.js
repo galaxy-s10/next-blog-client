@@ -25,7 +25,7 @@ const nextConfig = {
 
     config.plugins = [
       ...config.plugins,
-      new BilldHtmlWebpackPlugin({ next12: true }),
+      new BilldHtmlWebpackPlugin.default({ next12: true }),
     ];
     if (process.env.NODE_ENV === 'production') {
       config.optimization.splitChunks = {
