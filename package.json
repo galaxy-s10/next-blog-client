@@ -38,7 +38,7 @@
     "billd-scss": "^0.0.6",
     "billd-utils": "^0.0.3",
     "dayjs": "^1.11.3",
-    "next": "12.1.6",
+    "next": "12.3.4",
     "next-redux-wrapper": "^7.0.5",
     "react": "18.1.0",
     "react-dom": "18.1.0",

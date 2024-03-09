@@ -55,13 +55,9 @@ const nextConfig = {
 
   images: {
     domains: [],
-    // unoptimized: true,
+    unoptimized: true,
   },
-  experimental: {
-    // images: {
-    //   unoptimized: true,
-    // },
-  },
+  experimental: {},
   // eslint: false,
   eslint: {
     // Warning: This allows production builds to successfully complete even if

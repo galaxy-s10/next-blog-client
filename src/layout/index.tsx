@@ -1,4 +1,3 @@
-import { version } from 'billd-utils';
 import { memo, useState, useEffect, Children } from 'react';
 
 import { fetchTypeList } from '@/services/type';
@@ -43,7 +42,6 @@ const Layout = (props) => {
 
   // 生命周期
   useEffect(() => {
-    console.log('billd-utils version', version);
     console.log('layout生命周期', props);
   }, []);
 
