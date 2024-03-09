@@ -34,17 +34,16 @@
     "@reduxjs/toolkit": "^1.8.3",
     "axios": "^0.27.2",
     "billd-deploy": "^1.0.25",
-    "billd-html-webpack-plugin": "^0.0.11",
-    "billd-scss": "^0.0.6",
-    "billd-utils": "^0.0.3",
+    "billd-html-webpack-plugin": "^1.0.6",
+    "billd-scss": "^0.0.8",
+    "billd-utils": "^0.0.22",
     "dayjs": "^1.11.3",
     "next": "12.3.4",
     "next-redux-wrapper": "^7.0.5",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-redux": "^8.0.2",
-    "redux": "^4.2.0",
-    "trash": "^8.1.1"
+    "redux": "^4.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",
@@ -66,6 +65,7 @@
     "prettier": "^2.6.2",
     "sass": "^1.52.3",
     "standard-version": "^9.3.2",
+    "trash": "^8.1.1",
     "typescript": "4.7.3"
   }
 }
